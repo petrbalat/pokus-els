@@ -1,0 +1,31 @@
+POST http://localhost:9200/products/_analyze
+Accept: application/json
+Content-Type: application/json
+
+{
+  "analyzer": "czech",
+  "text": "Jahody čerstvé - ve vaničce"
+}
+
+
+###
+PUT http://localhost:9200/products/products/1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "title": "Jahody čerstvé - ve vaničce"
+}
+
+### hledání
+POST http://localhost:9200/products/_search
+Accept: application/json
+Content-Type: application/json
+
+{
+  "query": {
+    "match": {
+      "title": "jahoda"
+    }
+  }
+}
