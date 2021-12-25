@@ -1,0 +1,44 @@
+#
+PUT http://localhost:9200/products
+Content-Type: application/json
+
+{
+  "settings": {
+    "index": {
+      "number_of_shards": "1",
+      "number_of_replicas": "0",
+      "analysis": {
+        "analyzer": {
+          "czech": {
+            "type": "custom",
+            "tokenizer": "standard",
+            "filter": [
+              "czech_stop",
+              "czech_hunspell",
+              "lowercase",
+              "czech_stop",
+              "icu_folding",
+              "unique_on_same_position"
+            ]
+          }
+        },
+        "filter": {
+          "czech_hunspell": {
+            "type": "hunspell",
+            "locale": "cs_CZ"
+          },
+          "czech_stop": {
+            "type": "stop",
+            "stopwords": ["že", "_czech_"]
+          },
+          "unique_on_same_position": {
+            "type": "unique",
+            "only_on_same_position": true
+          }
+        }
+      }
+    }
+  }
+}
+
+###
