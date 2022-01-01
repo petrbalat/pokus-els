@@ -2,8 +2,7 @@
   <configuration default="false" name="elasticsearch" type="docker-deploy" factoryName="docker-image" server-name="Docker">
     <deployment type="docker-image">
       <settings>
-        <option name="imageTag" value="elasticsearch:7.16.2" />
-        <option name="command" value="" />
+        <option name="imageTag" value="petrbalat/cs-els" />
         <option name="containerName" value="elasticsearch" />
         <option name="envVars">
           <list>
